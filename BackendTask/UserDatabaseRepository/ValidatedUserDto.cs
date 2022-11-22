@@ -37,6 +37,24 @@ namespace BackendTask
                         flag = true;
                     }
                 }
+                int lettersUpperCount = 0;
+                int lettersLowerCount = 0;
+                int numbersCount = 0;
+                foreach (char c in userName)
+                {
+                    if (char.IsUpper(c))
+                    {
+                        lettersUpperCount += 1;
+                    }
+                    if (char.IsLower(c))
+                    {
+                        lettersLowerCount += 1;
+                    }
+                    if (char.IsNumber(c))
+                    {
+                        numbersCount += 1;
+                    }
+                }
                 if (userName.ToLower() != "admin" && flag == false) 
                 {
                     return true;
@@ -68,9 +86,31 @@ namespace BackendTask
                         flag = true;
                     }
                 }
-                if (flag == false)
+                int lettersUpperCount = 0;
+                int lettersLowerCount = 0;
+                int numbersCount = 0;
+                foreach (char c in password)
+                {
+                    if (char.IsUpper(c))
+                    {
+                        lettersUpperCount += 1;
+                    }
+                    if (char.IsLower(c))
+                    {
+                        lettersLowerCount += 1;
+                    }
+                    if (char.IsNumber(c))
+                    {
+                        numbersCount += 1;
+                    }
+                }
+                if (flag == false && numbersCount >= 1 && lettersLowerCount >= 1 && lettersUpperCount >= 1)
                 {
                     return true;
+                }
+                else if (numbersCount < 1 || lettersUpperCount < 1 || lettersLowerCount < 1)
+                {
+                    ErrorMessage = "Username must have at least one number, one capital and one small letter";
                 }
                 else
                 {
