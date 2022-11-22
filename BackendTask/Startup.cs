@@ -96,9 +96,13 @@ namespace BackendTask
                                 await context.Response.WriteAsync(isUserName);
                             }
                         }
-                        else
+                        else if(query.id<0)
                         {
                             await context.Response.WriteAsync("Invad id!");
+                        }
+                        else
+                        {
+                            await context.Response.WriteAsync("No data!");
                         }
                     }
                     catch(Exception ex)
