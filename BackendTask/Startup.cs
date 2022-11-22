@@ -76,7 +76,7 @@ namespace BackendTask
                             }
 
                         }
-                        else if(query.username!= null)
+                        else if(query.username!= null && query.username!="")
                         {
                             string isUserName = um.IsUserName(query.username);
                             if (isUserName == "")
