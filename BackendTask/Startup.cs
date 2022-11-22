@@ -23,7 +23,7 @@ namespace BackendTask
             }
             
             app.UseRouting();
-            app.ApplicationServices.GetService<UserDatabaseRepository>().ConfigureDb();
+          
             app.UseEndpoints(endpoints =>
             {
                 
