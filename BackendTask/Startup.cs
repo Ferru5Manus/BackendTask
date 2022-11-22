@@ -150,7 +150,15 @@ namespace BackendTask
                     try
                     {
                         var query = await context.Request.ReadFromJsonAsync<ValidatedUserDto>();
-                        await context.Response.WriteAsync(um.UpdateUser(query));
+                        string isId = um.IsId(query.id);
+                        if (isId == "")
+                        {
+                            await context.Response.WriteAsync(um.UpdateUser(query));
+                        }
+                        else
+                        {
+                            await context.Response.WriteAsync(isId);
+                        }
                     }
                     catch(Exception ex)
                     {
