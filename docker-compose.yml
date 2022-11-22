@@ -1,0 +1,22 @@
+﻿services:
+    db:
+        image: mariadb:latest
+        environment:
+          - MYSQL_ROOT_PASSWORD=root
+          - MYSQL_LOG_CONSOLE=true
+          - MYSQL_DATABASE=users
+        ports:
+          - 3306:3306
+        volumes:
+          - ./database:/var/lib/mysql
+        restart: always
+
+    cs_service:
+        build: BackendTask
+        ports:
+          - 80:80
+        depends_on:
+          - db
+        environment:
+          - "DB_URL=Server=db; Database=users; Uid=root; Pwd=root;"
+        restart: always
