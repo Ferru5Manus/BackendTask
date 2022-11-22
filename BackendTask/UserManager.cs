@@ -108,22 +108,29 @@ public class UserManager
     public string IsUserName(string userName)
     {
         
-            bool flag = false;
-            foreach (var item in "\"';<>?/{}[]@#$%^&*()-+=_ ")
+        bool flag = false;
+        foreach (var item in "\"';<>?/{}[]@#$%^&*()-+=_ ")
+        {
+            if (userName.Contains(item))
             {
-                if (userName.Contains(item))
-                {
-                    flag = true;
-                }
+                flag = true;
             }
-            if (userName.ToLower() != "admin" && flag == false && userName.Length>5 && userName.Length<50)
+        }
+        if (userName.ToLower() != "admin" && flag == false && userName.Length>5 && userName.Length<50)
+        {
+            return "";
+        }
+        else
+        {
+            if ((userName.Length < 5 || userName.Length > 50))
             {
-                return "";
+                return "Invalid username length!";
             }
             else
             {
                 return "Invalid username! " + userName;
             }
+        }
 
       
     }
