@@ -151,7 +151,7 @@ public class UserManager
         {
             if ((userName.Length < 5 || userName.Length > 50))
             {
-                if(flag=true)
+                if(flag==true)
                 {
                     return "Invalid username length!" + System.Environment.NewLine + "Invalid username: " + userName;
                 }
