@@ -110,7 +110,15 @@ namespace BackendTask
                 }
                 else if (numbersCount < 1 || lettersUpperCount < 1 || lettersLowerCount < 1)
                 {
-                    ErrorMessage = "Password must have at least one number, one capital and one small letter";
+                    if (flag == true)
+                    {
+                        ErrorMessage = "Password must have at least one number, one capital and one small letter!"+ System.Environment.NewLine+ "Invalid password!";
+
+                    }
+                    else
+                    {
+                        ErrorMessage = "Password must have at least one number, one capital and one small letter!";
+                    }
                 }
                 else
                 {
