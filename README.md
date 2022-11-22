@@ -3,11 +3,12 @@
 -----------
 1. ¬ первую очередь дл€ развЄртывани€ решени€ вам понадобитс€ docker, руководство по установке находитс€ здесь:
 ```
-https://docs.docker.com/desktop/install/linux-install/\
+https://docs.docker.com/desktop/install/linux-install/
 ```
 2. ƒалее нужно скачать проект в выбранную вами директорию, с помощью команды:
 ```
-git clone https://github.com/Romario1222/BackendTask
+    «десь может быть
+    ¬аша реклама
 ```
 3. ѕосле переходим в директорию с названием BackendTask, после чего прописываем команду:
 ```
