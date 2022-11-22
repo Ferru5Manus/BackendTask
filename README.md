@@ -2,11 +2,17 @@
 Подготовка к работе(Linux server):
 -----------
 1. В первую очередь для развёртывания решения вам понадобится docker, руководство по установке находится здесь:
-'''https://docs.docker.com/desktop/install/linux-install/'''
+```
+https://docs.docker.com/desktop/install/linux-install/\
+```
 2. Далее нужно скачать проект в выбранную вами директорию, с помощью команды:
-'''git clone https://github.com/Romario1222/BackendTask'''
+```
+git clone https://github.com/Romario1222/BackendTask
+```
 3. После переходим в директорию с названием BackendTask, после чего прописываем команду:
-'''docker compose up --build'''
+```
+docker compose up --build
+```
 4. Проект развёрнут.
 
 Работа с запросами:
