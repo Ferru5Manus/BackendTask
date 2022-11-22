@@ -27,7 +27,7 @@ namespace BackendTask
             app.UseEndpoints(endpoints =>
             {
                 
-                endpoints.MapGet("/getUser", async context =>
+                endpoints.MapPost("/getUser", async context =>
                 {
                     var um = app.ApplicationServices.GetService<UserManager>();
                   
@@ -35,7 +35,9 @@ namespace BackendTask
                         var query = await context.Request.ReadFromJsonAsync<ValidatedUserDto>();
                         if (query.id != 0)
                         {
-                            if (um.IsId(query.id) == "")
+                            string isId = um.IsId(query.id);
+                            string isUserName = um.IsUserName(query.username);
+                            if (isId == "" && isUserName=="")
                             {
                                 var res = um.GetUser(query.id);
                                 if (res != null)
@@ -49,13 +51,14 @@ namespace BackendTask
                             }
                             else
                             {
-                                await context.Response.WriteAsJsonAsync(um.IsId(query.id));
+                                await context.Response.WriteAsJsonAsync(isId+ System.Environment.NewLine+isUserName);
                             }
 
                         }
                         else
                         {
-                            if (um.IsUserName(query.username) == "")
+                            var isUserName = um.IsUserName(query.username);
+                            if (isUserName == "")
                             {
                                 var res = um.GetUser(query.username);
                                 if (res != null)
@@ -69,7 +72,7 @@ namespace BackendTask
                             }
                             else
                             {
-                                await context.Response.WriteAsJsonAsync(um.IsUserName(query.username));
+                                await context.Response.WriteAsJsonAsync(isUserName);
                             }
                         }
                     }
@@ -100,7 +103,15 @@ namespace BackendTask
                     try
                     {
                         var query = await context.Request.ReadFromJsonAsync<ValidatedUserDto>();
-                        await context.Response.WriteAsync(um.DeleteUser(query.id));
+                        string isId = um.IsId(query.id);
+                        if (isId == "")
+                        {
+                            await context.Response.WriteAsync(um.DeleteUser(query.id));
+                        }
+                        else
+                        {
+                            await context.Response.WriteAsync(isId);
+                        }
                     }
                     catch(Exception ex)
                     {
