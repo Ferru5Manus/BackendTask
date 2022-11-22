@@ -76,7 +76,7 @@ namespace BackendTask
                             }
 
                         }
-                        else
+                        else if(query.username!= null)
                         {
                             var isUserName = um.IsUserName(query.username);
                             if (isUserName == "")
@@ -96,10 +96,14 @@ namespace BackendTask
                                 await context.Response.WriteAsJsonAsync(isUserName);
                             }
                         }
+                        else
+                        {
+                            await context.Response.WriteAsync("Invad id!");
+                        }
                     }
                     catch(Exception ex)
                     {
-                        await context.Response.WriteAsync(ex.ToString());
+                        await context.Response.WriteAsync(ex.Message);
                     }
                 });
               
