@@ -110,7 +110,7 @@ namespace BackendTask
                 }
                 else if (numbersCount < 1 || lettersUpperCount < 1 || lettersLowerCount < 1)
                 {
-                    ErrorMessage = "Username must have at least one number, one capital and one small letter";
+                    ErrorMessage = "Password must have at least one number, one capital and one small letter";
                 }
                 else
                 {
