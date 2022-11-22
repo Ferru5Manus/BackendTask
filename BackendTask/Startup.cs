@@ -33,25 +33,46 @@ namespace BackendTask
                   
                     try{
                         var query = await context.Request.ReadFromJsonAsync<ValidatedUserDto>();
-                        if (query.id != 0)
+                        if (query.id > 0)
                         {
                             string isId = um.IsId(query.id);
-                            string isUserName = um.IsUserName(query.username);
-                            if (isId == "" && isUserName=="")
-                            {
-                                var res = um.GetUser(query.id);
-                                if (res != null)
+                            if(query.username!= null) {
+                                string isUserName = um.IsUserName(query.username);
+                                if (isId == "" && isUserName == "")
                                 {
-                                    await context.Response.WriteAsJsonAsync(res);
+                                    var res = um.GetUser(query.id);
+                                    if (res != null)
+                                    {
+                                        await context.Response.WriteAsJsonAsync(res);
+                                    }
+                                    else
+                                    {
+                                        await context.Response.WriteAsync("No user with such id!");
+                                    }
                                 }
                                 else
                                 {
-                                    await context.Response.WriteAsync("No user with such id!");
+                                    await context.Response.WriteAsJsonAsync(isId + System.Environment.NewLine + isUserName);
                                 }
                             }
                             else
                             {
-                                await context.Response.WriteAsJsonAsync(isId+ System.Environment.NewLine+isUserName);
+                                if (isId == "")
+                                {
+                                    var res = um.GetUser(query.id);
+                                    if (res != null)
+                                    {
+                                        await context.Response.WriteAsJsonAsync(res);
+                                    }
+                                    else
+                                    {
+                                        await context.Response.WriteAsync("No user with such id!");
+                                    }
+                                }
+                                else
+                                {
+                                    await context.Response.WriteAsJsonAsync(isId + System.Environment.NewLine + isUserName);
+                                }
                             }
 
                         }
@@ -78,7 +99,7 @@ namespace BackendTask
                     }
                     catch(Exception ex)
                     {
-                        await context.Response.WriteAsync(ex.Message);
+                        await context.Response.WriteAsync(ex.Message+ex.Source);
                     }
                 });
               

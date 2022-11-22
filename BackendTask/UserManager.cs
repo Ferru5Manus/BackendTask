@@ -39,9 +39,7 @@ public class UserManager
             var results = IsValidated(currUser);
             if (results == null)
             {
-
                 Console.WriteLine(currUser.id);
-
                 return _userDatabaseRepository.CreateUser(currUser);
             }
             else
