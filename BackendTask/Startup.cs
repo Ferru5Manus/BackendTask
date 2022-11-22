@@ -71,7 +71,7 @@ namespace BackendTask
                                 }
                                 else
                                 {
-                                    await context.Response.WriteAsJsonAsync(isId + System.Environment.NewLine + isUserName);
+                                    await context.Response.WriteAsJsonAsync(isId + System.Environment.NewLine);
                                 }
                             }
 
@@ -99,7 +99,7 @@ namespace BackendTask
                     }
                     catch(Exception ex)
                     {
-                        await context.Response.WriteAsync(ex.Message+ex.Source);
+                        await context.Response.WriteAsync(ex.Message);
                     }
                 });
               
