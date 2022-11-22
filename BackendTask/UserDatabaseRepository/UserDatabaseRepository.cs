@@ -94,7 +94,7 @@ namespace BackendTask
                 using (IDbConnection db = new MySqlConnection(Environment.GetEnvironmentVariable("DB_URL")))
                 {
                     string sqlQuery1 = "DELETE FROM userTable WHERE id="+id.ToString()+";" ;
-                    Console.WriteLine("Delete Sucsesseful");
+                    Console.WriteLine("Deleted user");
                     int rowsAffected = db.Execute(sqlQuery1);
                     return "Deleted user!";
                 }
