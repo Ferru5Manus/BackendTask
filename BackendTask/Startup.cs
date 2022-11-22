@@ -78,7 +78,7 @@ namespace BackendTask
                         }
                         else if(query.username!= null)
                         {
-                            var isUserName = um.IsUserName(query.username);
+                            string isUserName = um.IsUserName(query.username);
                             if (isUserName == "")
                             {
                                 var res = um.GetUser(query.username);
@@ -93,7 +93,7 @@ namespace BackendTask
                             }
                             else
                             {
-                                await context.Response.WriteAsJsonAsync(isUserName);
+                                await context.Response.WriteAsync(isUserName);
                             }
                         }
                         else
