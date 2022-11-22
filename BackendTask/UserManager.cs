@@ -153,7 +153,7 @@ public class UserManager
             {
                 if(flag=true)
                 {
-                    return "Invalid username length!" + System.Environment.NewLine + "Invalid username! " + userName;
+                    return "Invalid username length!" + System.Environment.NewLine + "Invalid username: " + userName;
                 }
                 else
                 {
@@ -162,7 +162,7 @@ public class UserManager
             }
             else
             {
-                return "Invalid username! " + userName;
+                return "Invalid username: " + userName;
             }
         }
 
