@@ -99,7 +99,7 @@ namespace BackendTask
                     }
                     catch(Exception ex)
                     {
-                        await context.Response.WriteAsync(ex.Message);
+                        await context.Response.WriteAsync(ex.ToString());
                     }
                 });
               
