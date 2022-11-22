@@ -131,16 +131,25 @@ namespace BackendTask
                    
                     try
                     {
+                        
                         var query = await context.Request.ReadFromJsonAsync<ValidatedUserDto>();
-                        string isId = um.IsId(query.id);
-                        if (isId == "")
+                        if (query.id==0) 
                         {
-                            await context.Response.WriteAsync(um.DeleteUser(query.id));
+                            await context.Response.WriteAsync("No data!");
                         }
                         else
                         {
-                            await context.Response.WriteAsync(isId);
+                            string isId = um.IsId(query.id);
+                            if (isId == "")
+                            {
+                                await context.Response.WriteAsync(um.DeleteUser(query.id));
+                            }
+                            else
+                            {
+                                await context.Response.WriteAsync(isId);
+                            }
                         }
+                        
                     }
                     catch(Exception ex)
                     {
@@ -154,15 +163,24 @@ namespace BackendTask
                     try
                     {
                         var query = await context.Request.ReadFromJsonAsync<ValidatedUserDto>();
-                        string isId = um.IsId(query.id);
-                        if (isId == "")
+                        if (query.id == 0)
                         {
-                            await context.Response.WriteAsync(um.UpdateUser(query));
+                            await context.Response.WriteAsync("No data!");
                         }
                         else
                         {
-                            await context.Response.WriteAsync(isId);
+                            string isId = um.IsId(query.id);
+
+                            if (isId == "")
+                            {
+                                await context.Response.WriteAsync(um.UpdateUser(query));
+                            }
+                            else
+                            {
+                                await context.Response.WriteAsync(isId);
+                            }
                         }
+                        
                     }
                     catch(Exception ex)
                     {
