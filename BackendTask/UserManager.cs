@@ -143,7 +143,7 @@ public class UserManager
                 flag = true;
             }
         }
-        if (userName.ToLower() != "admin" && flag == false && userName.Length>5 && userName.Length<50)
+        if (userName.ToLower() != "admin" && flag == false && userName.Length>=5 && userName.Length<=50)
         {
             return "";
         }
