@@ -51,12 +51,12 @@ namespace BackendTask
         {
             try
             {
-                    using (IDbConnection db = new MySqlConnection(Environment.GetEnvironmentVariable("DB_URL")))
-                    {
-                        string sqlQuery1 = "INSERT INTO userTable (id,username,password,created_at,updated_at) VALUES(@id,@username,@password,@created_at,@updated_at)";
-                        int rowsAffected = db.Execute(sqlQuery1, user);
-                        return "Added user!";
-                    }
+                using (IDbConnection db = new MySqlConnection(Environment.GetEnvironmentVariable("DB_URL")))
+                {
+                    string sqlQuery1 = "INSERT INTO userTable (id,username,password,created_at,updated_at) VALUES(@id,@username,@password,@created_at,@updated_at)";
+                    db.Execute(sqlQuery1, user);
+                    return "Added user!";
+                }
                
             }
             catch(Exception ex)
@@ -75,7 +75,7 @@ namespace BackendTask
 
                     string sqlQuery1 = "UPDATE userTable SET username=@username,password=@password,updated_at=@updated_at WHERE id LIKE @id;";
 
-                    int rowsAffected = db.Execute(sqlQuery1, user);
+                    db.Execute(sqlQuery1, user);
                     return "Updated user!";
                 }
                 
@@ -95,7 +95,7 @@ namespace BackendTask
                 {
                     string sqlQuery1 = "DELETE FROM userTable WHERE id="+id.ToString()+";" ;
                     Console.WriteLine("Deleted user");
-                    int rowsAffected = db.Execute(sqlQuery1);
+                    db.Execute(sqlQuery1);
                     return "Deleted user!";
                 }
                 
