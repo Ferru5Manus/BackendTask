@@ -55,7 +55,7 @@ namespace BackendTask
                 {
                     string sqlQuery1 = "INSERT INTO userTable (id,username,password,created_at,updated_at) VALUES(@id,@username,@password,@created_at,@updated_at)";
                     db.Execute(sqlQuery1, user);
-                    return "Added user!";
+                    return "Added user with id: "+user.id.ToString();
                 }
                
             }
